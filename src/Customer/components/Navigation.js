@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
     render(){
         return(
             <nav id="colorlib-main-nav" role="navigation">
-                <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
+                <a href="/" className="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
                 <div className="js-fullheight colorlib-table">
                     <div className="colorlib-table-cell js-fullheight">
                         <div className="row">

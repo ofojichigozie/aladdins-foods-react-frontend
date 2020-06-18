@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableHead, TableBody, TableRow, TableCell, Paper, Grid } from '@material-ui/core';
 import { EditRounded, DeleteRounded } from '@material-ui/icons';
 import EditCategoryModal from './EditCategoryModal'
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 
 function ListOfCategories(props){
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
 
     let [loading, setLoading] = React.useState(false);
 
@@ -67,8 +67,8 @@ function ListOfCategories(props){
                     
                     setLoading(true);
 
-                    const deleteProductResponse = await axios.get(`api/v1/admin/deleteCategory/${category.id}`, {headers : headers});
-                    if(deleteProductResponse.data.status == "CATEGORY_DELETED"){
+                    const deleteProductResponse = await axios.get(`https://aladdins-foods.herokuapp.com/api/v1/admin/deleteCategory/${category.id}`, {headers : headers});
+                    if(deleteProductResponse.data.status === "CATEGORY_DELETED"){
                         setLoading(false);
                         window.location.href = '/admin/add-new-product';
                     }else{

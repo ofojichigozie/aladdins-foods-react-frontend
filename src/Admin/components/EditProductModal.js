@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import {Modal, Select, Paper, MenuItem, CircularProgress } from '@material-ui/core';
 import { CloseRounded } from '@material-ui/icons';
 import axios from 'axios'
@@ -38,19 +38,19 @@ const useStyles = makeStyles(theme => ({
 
 function EditProductModal(props) {
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
 
     let [productCategories, setProductCategories] = React.useState([]);
     let [updateProgressDisplay, setUpdateProgressDisplay] = React.useState("none");
 
     React.useEffect(() => {
-        axios.get('api/v1/admin/readProductCategories', {
+        axios.get('https://aladdins-foods.herokuapp.com/api/v1/admin/readProductCategories', {
             headers: {
                 //No headers
             }
         })
         .then(response => {
-            if(response.data.status == 'PRODUCT_CATEGORIES_FOUND'){
+            if(response.data.status === 'PRODUCT_CATEGORIES_FOUND'){
                 setProductCategories(response.data.productCategories);
             }else{
                 setProductCategories([]);
@@ -93,8 +93,8 @@ function EditProductModal(props) {
 
                 setUpdateProgressDisplay("inline");
 
-                const editProductResponse = await axios.post(`api/v1/admin/updateProduct/${id}`, formData, {headers : headers});
-                if(editProductResponse.data.status == "PRODUCT_UPDATED"){
+                const editProductResponse = await axios.post(`https://aladdins-foods.herokuapp.com/api/v1/admin/updateProduct/${id}`, formData, {headers : headers});
+                if(editProductResponse.data.status === "PRODUCT_UPDATED"){
 
                     setUpdateProgressDisplay("none");
 
@@ -216,6 +216,7 @@ function EditProductModal(props) {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={() => editProduct(props.product.id)}
                         >
                             Edit
                         </Button>

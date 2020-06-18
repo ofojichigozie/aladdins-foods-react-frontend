@@ -46,7 +46,7 @@ import React, { Component } from 'react';
                                     <i className="icon-envelope"></i>
                                 </span>
                                 <h2>Email</h2>
-                                <p><a href="#">info@domain.com</a><br/><a href="#">luto@email.com</a></p>
+                                <p><a href="/">info@domain.com</a><br/><a href="/">luto@email.com</a></p>
                             </div>
                         </div>
                     </div>

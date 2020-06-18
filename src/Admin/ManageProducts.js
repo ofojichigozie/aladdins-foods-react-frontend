@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import ResponsiveDrawer from './components/ResponsiveDrawer';
 import ListOfProducts from './components/ListOfProducts';
 import axios from 'axios'
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 function ManageProducts(){
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
 
     let [products, setProducts] = React.useState([]);
 
@@ -50,8 +50,8 @@ function ManageProducts(){
                     // 
                 };
 
-                const getProductsResponse = await axios.get('api/v1/admin/readProducts', {headers : headers});
-                if(getProductsResponse.data.status == "PRODUCTS_FOUND"){
+                const getProductsResponse = await axios.get('https://aladdins-foods.herokuapp.com/api/v1/admin/readProducts', {headers : headers});
+                if(getProductsResponse.data.status === "PRODUCTS_FOUND"){
                     setProducts(getProductsResponse.data.data);
                 }else{
                     setProducts([]);

@@ -30,7 +30,7 @@ class CheckOut extends React.Component {
       
     };
 
-    const response = axios.get('api/v1/stripePayment', formData, {headers : headers});
+    const response = axios.get('https://aladdins-foods.herokuapp.com/api/v1/stripePayment', formData, {headers : headers});
     
     alert(JSON.stringify(response.data));
   }

@@ -14,7 +14,6 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Divider, Avatar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import {AddRounded, PeopleRounded, ShoppingCartRounded, PersonAddRounded, DashboardRounded, ViewListRounded, ArrowBackRounded, DashboardOutlined} from '@material-ui/icons';
-import { NONAME } from 'dns';
 import SideBarImage from './images/sidebar.jpg';
 
 const drawerWidth = 240;

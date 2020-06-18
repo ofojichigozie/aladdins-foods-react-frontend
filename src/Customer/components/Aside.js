@@ -68,7 +68,7 @@ import React, { Component } from 'react';
                     
                     </ul>
                     <div className="mouse">
-                    <a href="#" className="mouse-icon">
+                    <a href="/" className="mouse-icon">
                         <div className="mouse-wheel"></div>
                     </a>
                     </div>

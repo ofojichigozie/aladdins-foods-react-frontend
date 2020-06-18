@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import {Modal, Paper, CircularProgress } from '@material-ui/core';
 import { CloseRounded } from '@material-ui/icons';
 import axios from 'axios'
@@ -37,9 +37,9 @@ const useStyles = makeStyles(theme => ({
 
 function EditProductModal(props) {
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
 
-    let [productCategories, setProductCategories] = React.useState([]);
+    // let [productCategories, setProductCategories] = React.useState([]);
     let [updateProgressDisplay, setUpdateProgressDisplay] = React.useState("none");
 
     async function editCategory(id){
@@ -57,8 +57,8 @@ function EditProductModal(props) {
 
                 setUpdateProgressDisplay("inline");
 
-                const editCategoryResponse = await axios.post(`api/v1/admin/updateCategory/${id}`, formData, {headers : headers});
-                if(editCategoryResponse.data.status == "CATEGORY_UPDATED"){
+                const editCategoryResponse = await axios.post(`https://aladdins-foods.herokuapp.com/api/v1/admin/updateCategory/${id}`, formData, {headers : headers});
+                if(editCategoryResponse.data.status === "CATEGORY_UPDATED"){
 
                     setUpdateProgressDisplay("none");
 

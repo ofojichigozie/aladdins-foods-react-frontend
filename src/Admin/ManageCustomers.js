@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import ResponsiveDrawer from './components/ResponsiveDrawer';
 
 const useStyles = makeStyles(theme => ({
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 
 function ManageCustomers(){
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
 
     React.useEffect(() => {
         try{

@@ -22,8 +22,8 @@ import axios from 'axios'
                     // 
                 };
 
-                const getProductsResponse = await axios.get('api/v1/admin/readProducts', {headers : headers}); console.log(getProductsResponse);
-                if(getProductsResponse.data.status == "PRODUCTS_FOUND"){
+                const getProductsResponse = await axios.get('https://aladdins-foods.herokuapp.com/api/v1/admin/readProducts', {headers : headers}); console.log(getProductsResponse);
+                if(getProductsResponse.data.status === "PRODUCTS_FOUND"){
                     //If products are read, set response data to applicatin level state
                     thisApp.addFetchedServerItemsToAppState(getProductsResponse.data.data);
                 }else{
@@ -76,12 +76,12 @@ import axios from 'axios'
                                     {
                                         distinctCategories.map((distinctCategory, index) => {
                                             return(
-                                                <div key={index} role="tabpanel" className={'tab-pane ' + (index == 0 ? 'active' : '')} id={`${distinctCategory}`}>
+                                                <div key={index} role="tabpanel" className={'tab-pane ' + (index === 0 ? 'active' : '')} id={`${distinctCategory}`}>
                                                     <div className="row">
                                                         {/* ITERATION WILL BE DONE TO RETRIEVE MEALS FROM EACH */}
                                                         {
                                                             this.props.items.map((item, index) => {
-                                                                if(item.category == distinctCategory){
+                                                                if(item.category === distinctCategory){
                                                                     return (
                                                                         <div key={index} className="col-md-3 col-xs-12" style={{marginTop: '10px'}}>
                                                                             <div style={{ height: '300px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
@@ -94,6 +94,8 @@ import axios from 'axios'
                                                                             </div>
                                                                         </div>
                                                                     )
+                                                                }else{
+                                                                    return ""
                                                                 }
                                                             })
                                                         }

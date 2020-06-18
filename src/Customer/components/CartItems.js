@@ -45,7 +45,7 @@ class CartItems extends React.Component{
                                             <td style={{ padding: '35px', textAlign: 'center'}}>{index + 1}</td>
                                             <td style={{ padding: '35px', textAlign: 'center'}}>
                                                 <div style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row'}}>
-                                                    <img src={`/Uploads/ProductImages/${item.image_name}`} style={{ width: '65px', height: 'auto', borderRadius: '5px'}}/>
+                                                    <img src={`/Uploads/ProductImages/${item.image_name}`} alt="product" style={{ width: '65px', height: 'auto', borderRadius: '5px'}}/>
                                                  {item.name}
                                                 </div>
                                             </td>

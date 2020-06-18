@@ -1,5 +1,5 @@
 
-import { FETCH_ITEMS_FROM_SERVER,ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY,ADD_SHIPPING} from './action-types/cart-actions'
+import { FETCH_ITEMS_FROM_SERVER,ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY} from './action-types/cart-actions'
 //fetch items from server
 export const fetchItemsFromServer= (items)=>{
     return{

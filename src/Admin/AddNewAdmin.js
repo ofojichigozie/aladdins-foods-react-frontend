@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import ResponsiveDrawer from './components/ResponsiveDrawer';
 import axios from 'axios'
 import Modal from './components/Modal'
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 
 function Dashboard(){
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
 
     let [loading, setLoading] = React.useState(false);
 
@@ -92,8 +92,8 @@ function Dashboard(){
 
                 setLoading(true);
 
-                const loginResponse = await axios.post('api/v1/admin/register', data, {headers : headers});
-                if(loginResponse.data.status == "NEW_ADMIN_ADDED"){
+                const loginResponse = await axios.post('https://aladdins-foods.herokuapp.com/api/v1/admin/register', data, {headers : headers});
+                if(loginResponse.data.status === "NEW_ADMIN_ADDED"){
 
                     setLoading(false);
 

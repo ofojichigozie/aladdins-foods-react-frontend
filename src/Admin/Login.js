@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
 import axios from 'axios'
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
 
     let [loginEmail, setLoginEmail] = React.useState("");
     let [loginPassword, setLoginPassword] = React.useState("");
@@ -75,8 +75,8 @@ export default function SignIn() {
 
                 setLoading(true);
 
-                const loginResponse = await axios.post('api/v1/admin/login', data, {headers : headers});
-                if(loginResponse.data.status == "AUTH_SUCCEED"){
+                const loginResponse = await axios.post('https://aladdins-foods.herokuapp.com/api/v1/admin/login', data, {headers : headers});
+                if(loginResponse.data.status === "AUTH_SUCCEED"){
 
                     localStorage.setItem("aladdins_admin_email", email);
 

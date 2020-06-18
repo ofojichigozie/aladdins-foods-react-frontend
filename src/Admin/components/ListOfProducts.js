@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Table, TableHead, TableBody, TableRow, TableCell, Paper, Grid } from '@material-ui/core';
 import { EditRounded, DeleteRounded } from '@material-ui/icons';
 import EditProductModal from './EditProductModal';
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 
 function ListOfProducts(props){
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
     
     let [editModalState, setEditModalState] = React.useState(false);
     let [productToEdit, setProductToEdit] = React.useState({});
@@ -67,8 +67,8 @@ function ListOfProducts(props){
                     
                     setLoading(true);
 
-                    const deleteProductResponse = await axios.get(`api/v1/admin/deleteProduct/${product.id}`, {headers : headers});
-                    if(deleteProductResponse.data.status == "PRODUCT_DELETED"){
+                    const deleteProductResponse = await axios.get(`https://aladdins-foods.herokuapp.com/api/v1/admin/deleteProduct/${product.id}`, {headers : headers});
+                    if(deleteProductResponse.data.status === "PRODUCT_DELETED"){
                         setLoading(false);
                         window.location.href = '/admin/products';
                     }else{

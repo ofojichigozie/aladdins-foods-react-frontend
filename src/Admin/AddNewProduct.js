@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import ResponsiveDrawer from './components/ResponsiveDrawer';
 import { Select, Card, CardContent, MenuItem } from '@material-ui/core';
 import Modal from './components/Modal'
@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 
 function AddNewProduct(){
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
 
     let [productCategories, setProductCategories] = React.useState([]);
     let [newCategory, setNewCategory] = React.useState("");
@@ -79,13 +79,13 @@ function AddNewProduct(){
             console.log("Error getting from local storage");
         }
 
-        axios.get('api/v1/admin/readProductCategories', {
+        axios.get('https://aladdins-foods.herokuapp.com/api/v1/admin/readProductCategories', {
             headers: {
                 //No headers
             }
         })
         .then(response => {
-            if(response.data.status == 'PRODUCT_CATEGORIES_FOUND'){
+            if(response.data.status === 'PRODUCT_CATEGORIES_FOUND'){
                 setProductCategories(response.data.productCategories);
             }else{
                 setProductCategories([]);
@@ -110,8 +110,8 @@ function AddNewProduct(){
 
                 setLoading(true);
 
-                const loginResponse = await axios.post('api/v1/admin/createNewProductCategory', data, {headers : headers});
-                if(loginResponse.data.status == "NEW_PRODUCT_CATEGORY_ADDED"){
+                const loginResponse = await axios.post('https://aladdins-foods.herokuapp.com/api/v1/admin/createNewProductCategory', data, {headers : headers});
+                if(loginResponse.data.status === "NEW_PRODUCT_CATEGORY_ADDED"){
 
                     setLoading(false);
 
@@ -152,8 +152,8 @@ function AddNewProduct(){
 
                 setLoading(true);
 
-                const loginResponse = await axios.post('api/v1/admin/createProduct', formData, {headers : headers});
-                if(loginResponse.data.status == "PRODUCT_ADDED"){
+                const loginResponse = await axios.post('https://aladdins-foods.herokuapp.com/api/v1/admin/createProduct', formData, {headers : headers});
+                if(loginResponse.data.status === "PRODUCT_ADDED"){
 
                     setLoading(false);
 
